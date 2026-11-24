@@ -40,26 +40,27 @@ public class Program {
         // STEP A (loop): make an empty list, loop through products, and add each one
         //   whose category matches (equalsIgnoreCase). Return the list.
         //  Step A: write the loop. Run it, and check the answer against When it's right below.
-        List<Product> productList = new ArrayList<>();
-        for (Product product : products) {
-            if (product.getCategory().equalsIgnoreCase(category)) {
-                productList.add(product);
-            }
-        }
-        System.out.println("With a loop:");
-        for (Product product : productList) {
-            System.out.println(product.getPrice());
-        }
-        // STEP B (stream): products.stream(), then .filter(...), then .toList()
-        return new ArrayList<>(); // replace this line
-//        List<Product> productList1 = products.stream()
-//                .filter(employee -> employee.getSalary().compareTo(limit) > 0)
-//                .toList();
-//
-//        System.out.println("With a stream:");
-//        for (Employee product : productList1) {
-//            System.out.println(employee.getName());
+//        List<Product> productList = new ArrayList<>();
+//        for (Product product : products) {
+//            if (product.getCategory().equalsIgnoreCase(category)) {
+//                productList.add(product);
+//            }
 //        }
+//        System.out.println("With a loop:");
+//        for (Product product : productList) {
+//            System.out.println(product.getName());
+//        }
+        // STEP B (stream): products.stream(), then .filter(...), then .toList()
+//        return new ArrayList<>(); // replace this line
+        List<Product> productList1 = products.stream()
+                .filter(product -> product.getCategory().equalsIgnoreCase(category))
+                .toList();
+
+        System.out.println("With a stream:");
+        for (Product product : productList1) {
+            System.out.println(product.getName() + " " + product.getPrice());
+        }
+        return productList1;
     }
 
 
