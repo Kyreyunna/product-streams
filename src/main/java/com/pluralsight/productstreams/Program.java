@@ -52,7 +52,6 @@ public class Program {
         }
         // STEP B (stream): products.stream(), then .filter(...), then .toList()
         return new ArrayList<>(); // replace this line
-
 //        List<Product> productList1 = products.stream()
 //                .filter(employee -> employee.getSalary().compareTo(limit) > 0)
 //                .toList();
