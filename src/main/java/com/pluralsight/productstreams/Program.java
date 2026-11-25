@@ -76,7 +76,7 @@ public class Program {
         BigDecimal total = BigDecimal.ZERO;
 
        for(Product product: products){
-         total=  total.add(product.getPrice());
+         total = total.add(product.getPrice());
            //got price from the product
            //next we want to take the price and add it to total
            //add total = so that the new total is saved to total
@@ -92,9 +92,35 @@ public class Program {
     // TASK 3: how many products are in one category
     private static long countProductsInCategory(List<Product> products, String category) {
         // STEP A (loop): a count that starts at 0, plus 1 for each match
-        // STEP B (stream): .filter(...), then .count()
+//        int count = 0;
+//        for(Product product: products){
+//            boolean match = product.equals(category);
+//            if(match==false){
+//                return 0 ;
+//            }
+//
+//            if (match==true&&count > 0) {
+//                  count = count + 1;
+//                  return count;
+//              }
+//          }
 
-        return 0; // replace this line
+
+        // STEP B (stream): .filter(...), then .count()
+        //matching categories, isn't using .count(), and isn't returning the stream's count
+// Start a stream from the products list and save the final count as a long
+        long count = products.stream()
+                // Keep only products whose category matches "category" (ignoring upper/lowercase)
+                .filter(product -> product.getCategory().equalsIgnoreCase(category))
+                // Count how many matching products are left and end the stream
+                .count();
+
+        System.out.println("With a stream:");
+            System.out.println(count);
+
+        return count;
+
+//        return count; // replace this line
     }
 
     // TASK 4: a list of just the prices
@@ -109,8 +135,9 @@ public class Program {
     // TASK 5: print each product
     private static void printProducts(List<Product> products) {
         // STEP A (loop): a for-each loop that prints each product
+        System.out.println("---Products---\n");
         for(Product product : products){
-            System.out.println(product);
+            System.out.println(products);
         }
         // STEP B: products.forEach(...) with a lambda
 
