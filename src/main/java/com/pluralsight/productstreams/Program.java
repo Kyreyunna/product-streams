@@ -58,7 +58,7 @@ public class Program {
 
         System.out.println("With a stream:");
         for (Product product : productList1) {
-            System.out.println(product.getName() + " " + product.getPrice());
+            System.out.println(product.getCategory() +" " + product.getName() + " " + product.getPrice());
         }
         return productList1;
     }
@@ -67,10 +67,26 @@ public class Program {
     // TASK 2: the total of every product's price
     private static BigDecimal getTotalInventoryValue(List<Product> products) {
         // STEP A (loop): start a total at BigDecimal.ZERO, and add each price with .add()
+        //total.add(price); alone does nothing; it's total = total.add(price);
+        //I want to loop through all the products, retrieve  their value, add it to the total  until there are no more products
+        //it's a list of prices I want to add to the total value?
+        if(getInventory().isEmpty()){
+            return new BigDecimal("0");
+        }
+        BigDecimal total = BigDecimal.ZERO;
+
+       for(Product product: products){
+         total=  total.add(product.getPrice());
+           //got price from the product
+           //next we want to take the price and add it to total
+           //add total = so that the new total is saved to total
+
+       }
+
         // STEP B (stream, after Wednesday's demo): .map(...) each product to its price,
         //   then .reduce(BigDecimal.ZERO, ...) to add them up
 
-        return BigDecimal.ZERO; // replace this line
+        return total; // replace this line
     }
 
     // TASK 3: how many products are in one category
@@ -94,7 +110,7 @@ public class Program {
     private static void printProducts(List<Product> products) {
         // STEP A (loop): a for-each loop that prints each product
         for(Product product : products){
-            printProducts(products);
+            System.out.println(product);
         }
         // STEP B: products.forEach(...) with a lambda
 
