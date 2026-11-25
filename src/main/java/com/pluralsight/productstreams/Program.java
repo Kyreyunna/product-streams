@@ -105,7 +105,6 @@ public class Program {
 //              }
 //          }
 
-
         // STEP B (stream): .filter(...), then .count()
         //matching categories, isn't using .count(), and isn't returning the stream's count
 // Start a stream from the products list and save the final count as a long
